@@ -120,13 +120,13 @@ def train(
         callbacks=[
             pl.callbacks.ModelCheckpoint(
                 dirpath=output_path,
-                filename='watermark-removal-{epoch:02d}-{val_loss:.2f}',
-                monitor='val_loss',
+                filename='watermark-removal-{epoch:02d}-{val_total_loss:.2f}',
+                monitor='val_total_loss',
                 mode='min',
                 save_top_k=3,
             ),
             pl.callbacks.EarlyStopping(
-                monitor='val_loss',
+                monitor='val_total_loss',
                 patience=10,
                 mode='min',
             ),
